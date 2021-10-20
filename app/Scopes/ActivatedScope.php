@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 
-class ActivatedScope implements Scope
+class LatestScope implements Scope
 {
 
     public function apply(Builder $builder, Model $model)
     {
-        $builder->whereActive(0);
+        $builder->whereActive('updated_at', 'asc');
     }
 }
